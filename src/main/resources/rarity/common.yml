@@ -1,0 +1,10 @@
+# Lore that will be added to the end of the item
+lore:
+  - ""
+  - "&f&lCOMMON ITEM"
+
+# Items that it will be applied to
+items:
+  - DIRT
+  - WOOD
+  - GoldenZombieChestplate

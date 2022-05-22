@@ -1,0 +1,18 @@
+gear:
+  helmet: none
+  chestplate: GoldenZombieChestplate
+  leggings: GoldenZombieLeggings
+  boots: GoldenZombieBoots
+
+bonuses:
+  potions:
+    '1':
+      effect: REGENERATION
+      level: 1
+    '2':
+      effect: JUMP
+      level: 2
+  stats:
+    health: 0
+    armor: 0
+    speed: 69

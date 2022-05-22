@@ -1,0 +1,12 @@
+name: CentrallslesCore
+version: '${project.version}'
+main: me.superbility.centrallslescore.Main
+depend:
+  - Quests
+  - WorldGuard
+  - PlaceholderAPI
+commands:
+  centralcore:
+    usage: /<command>
+    description: Main command
+    permission: centralcore.admin

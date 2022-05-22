@@ -1,0 +1,37 @@
+# Item Config
+# Note: Do NOT delete ANY sections regardless of whether
+#       you need them or not
+
+# Set material of item
+material: DIAMOND_SWORD
+
+# Set display of item
+# Color code compatible
+name: "&bSuper Sword"
+
+# Set lore of item
+# Unlimited lines + Color code compatible
+lore:
+  - "&7"
+  - "&7A mythical sword fallen"
+  - "&7from the heavens way back"
+  - "&7in the dwarven ages!"
+
+# Set enchants of item
+enchants:
+  # Adds sharpness 1 to the item
+  damage_all: 1
+
+# Set stats of item
+# Note: These stats will only work with armor and
+#       while it is equipped
+stats:
+  # Set the armor amount of the item
+  # Set to 0 for no change
+  armor: 0
+  # Set the health amount of the item
+  # Set to 0 for no change
+  health: 0
+  # Set the speed amount of the item
+  # Set to 0 for no change
+  speed: 0

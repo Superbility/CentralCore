@@ -1,0 +1,132 @@
+# Actionbar settings
+actionbar:
+
+  # Message displayed on the actionbar when the player has a quest tracked
+  quest: "&c{health}/{max_health}   &2{armor}   &a{xp}/{max_xp}   &bQuest: %quests_tracked%"
+
+  # Message displayed on the actionbar when the player has no quest tracked
+  noQuest: "&c{health}/{max_health}   &2{armor}   &a{xp}/{max_xp}"
+
+  # Refresh interval for the Actionbar
+  # Measured in ticks (20 ticks = 1 second)
+  refresh: 20
+
+# Messages
+messages:
+
+  helpCommand:
+    - "&6=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+    - "&6/centralcore giveitem [player] [item] [amount] &7- &eGives an item to a player"
+    - "&6/centralcore reload &7- &eReloads all config files"
+    - "&6/centralcore spawn [mob] &7- &eSpawns a core-mob"
+    - "&6/centralcore wand [type] &7- &eGives a mob-wand to the player"
+    - "&6/centralcore reload &7- &eReloads the plugin"
+    - "&6=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+
+  giveCommand:
+
+    # Item given message. Triggered when you give a player an item using the
+    # "/centralcore giveitem" command
+    #
+    # Placeholders:
+    #   - {item} returns the item given
+    #   - {receiver} returns the receiving player
+    #   - {amount} returns the amount of the item given
+    itemGiven:
+      - ""
+      - "&dYou have given &6{amount}x {item} &dto &6{receiver}"
+      - ""
+
+    # Item received message. Triggered when an item is received by a player when
+    # the "/centralcore giveitem" command is used
+    #
+    # Placeholders:
+    #   - {item} returns the item received
+    #   - {sender} returns the name of the command sender
+    #   - {amount} returns the amount of the item received
+    itemReceived:
+      - ""
+      - "&dYou have received &6{amount}x {item} &dfrom &6{sender}"
+      - ""
+
+  # Triggers when the "/centralcore reload" command is executed
+  reloadCommand:
+    - ""
+    - "&aAll files have been reloaded successfully!"
+    - ""
+
+  # Wand messages
+  wand:
+
+    # Triggered when a location that already exists has been attempted
+    # to be added
+    locationExists:
+      - ""
+      - "&cThat loction already exists for this mob!"
+      - ""
+
+    # Triggered when a location is successfully added
+    locationCreated:
+      - ""
+      - "&aLocation created successfully!"
+      - "&aRemember to reload the plugin for changes to be active!"
+      - ""
+
+    # Triggered when a location is successfully removed
+    locationRemoved:
+      - ""
+      - "&aLocation removed successfully!"
+      - "&aRemember to reload the plugin for changes to be active!"
+      - ""
+
+    # Triggers when a location that doesn't exist has been attempted
+    # to be removed
+    invalidLocation:
+      - ""
+      - "&cInvalid location!"
+      - ""
+
+# Wand config options
+wand:
+
+  # Name of wand item
+  #
+  # Placeholders:
+  #   - [type] shows the mob type
+
+  name: "&c&l[type] wand"
+
+  # Lore of wand item
+  #
+  # Placeholders:
+  #   - [type] shows the mob type
+  lore:
+    - ""
+    - "&7A mighty tool used by admins"
+    - "&7To create and destroy custom spawn"
+    - "&7 points for mobs with just the click of"
+    - "&7a button!"
+    - ""
+    - "&6Item Ability: Destroy &e&lLEFT CLICK"
+    - "&7Left click a block to delete a spawn point"
+    - "&7on it!"
+    - ""
+    - "&6Item Ability: Create &e&lRIGHT CLICK"
+    - "&7Right click a block to create a spawn point"
+    - "&7on it!"
+    - ""
+    - "&6Item Ability: Sight &e&lSHIFT + RIGHT CLICK"
+    - "&7Shows all neaby spawnpoints of this mob type!"
+    - ""
+    - "&eMob Type: [type]"
+    - ""
+    - "&c&l&k0&c&l ADMIN ITEM &c&l&k0"
+
+  # Display ability settings
+  display:
+
+    # Display block
+    block: BEACON
+
+    # Time displayed for (seconds)
+    time: 5

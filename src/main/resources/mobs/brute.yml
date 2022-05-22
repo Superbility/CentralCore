@@ -1,0 +1,96 @@
+# Type of the mob
+# For example: ZOMBIE
+type: ZOMBIE
+
+# Set above name of mob
+# Parameters:
+#   - {health} displays the current health of the mob
+#   - {maxhealth} displays the max health of the mob
+displayName: "&2&lZombie Brute &8| &c{health}/{maxhealth}❤"
+
+# Game name of mob
+# Will show up in death messages ect.
+name: Brute
+
+# Set max health of mob
+# Note if errors in console, please change settings in
+# spigot.yml / server.properties
+health: 100
+
+# The amount of damage the mob will do per hit
+# To use default value set to '-1'
+damage: 7.0
+
+# Gear of the mob
+# Can use custom items or materials
+# To use no item set to "none"
+gear:
+
+  # Set the item in hand of the mob
+  # Note this will not work for all mob types
+  hand: DIAMOND_SWORD
+
+  # Set the helmet item of the mob
+  # Note this will not work for all mob types
+  #
+  # This is an example using custom items
+  helmet: exampleHelmet
+
+  # Set the chestplate item of the mob
+  # Note this will not work for all mob types
+  chestplate: IRON_CHESTPLATE
+
+  # Set the leggings item of the mob
+  # Note this will not work for all mob types
+  leggings: "none"
+
+  # Set the boots item of the mob
+  # Note this will not work for all mob types
+  boots: "none"
+
+# List of drops that the mob can drop when killed
+drops:
+
+  # Identifier (really doesn't matter what it's set to)
+  1:
+    # Item
+    # Can be set to material or custom item
+    item: exampleItem
+
+    # Chance the item will drop
+    # Out of 100
+    chance: 20.0
+
+    # Amount of items that will drop
+    amount: 1
+
+  2:
+    # Item
+    # Can be set to material or custom item
+    item: DIAMOND
+
+    # Chance the item will drop
+    # Out of 100
+    chance: 100.0
+
+    # Amount of items that will drop
+    amount: 2
+
+# Spawn settings
+spawning:
+
+  # Spawn rate
+  # Controls how often the mob will spawn (seconds)
+  rate: 10
+
+  # Check radius
+  # Controls the radius around the location which will check for mobs
+  checkRadius: 5
+
+  # Check count
+  # Controls the maximum amount of mobs that can be in the check radius for the
+  # mob to spawn
+  checkCount: 4
+
+  # Locations (don't touch unless big brain)
+  locations: []

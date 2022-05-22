@@ -1,0 +1,42 @@
+# Item Config
+# Note: Do NOT delete ANY sections regardless of whether
+#       you need them or not
+
+# Set material of item
+material: LEATHER_BOOTS
+colour: "229 229 51"
+
+# Set display of item
+# Color code compatible
+name: "&eGolden Zombie Boots"
+
+# Set lore of item
+# Unlimited lines + Color code compatible
+lore:
+  - "&r"
+  - "&7Obtained from slaying Golden"
+  - "&7Zombies in the Mines."
+  - "&r"
+  - "&7 Health: &a+10❤"
+  - "&7 Armor: &2+5✯"
+  - "&r"
+  - "&8This item can be enchanted."
+  - "&r"
+  - "&2&lUNCOMMON"
+
+# Set enchants of item
+enchants: []
+
+# Set stats of item
+# Note: These stats will only work with armor and
+#       while it is equipped
+stats:
+  # Set the armor amount of the item
+  # Set to 0 for no change
+  armor: 5
+  # Set the health amount of the item
+  # Set to 0 for no change
+  health: 10
+  # Set the speed amount of the item
+  # Set to 0 for no change
+  speed: 0
