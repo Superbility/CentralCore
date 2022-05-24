@@ -33,7 +33,7 @@ public class RarityCache {
                 for(String s : config.getStringList("items")) {
                     if(ItemCache.items.containsKey(s)) { //If it is a core item
                         itemRarities.put(ItemCache.items.get(s).getItem(), identifier);
-                    } else if(XMaterial.matchXMaterial(s) != null) {
+                    } else if(XMaterial.matchXMaterial(s).isPresent()) {
                         itemRarities.put(XMaterial.matchXMaterial(s).get().parseItem(), identifier);
                     } else {
                         Bukkit.getConsoleSender().sendMessage(ChatColor.colorise("&c&lNo item found with the identifier '" + s + "' in rarity '" + identifier + "'"));
@@ -47,9 +47,6 @@ public class RarityCache {
     public static boolean itemHasRarityApplied(ItemStack item) {
         NBTItem nbtItem = new NBTItem(item);
 
-        if(nbtItem.hasKey("rarity")) {
-            return true;
-        }
-        return false;
+        return nbtItem.hasKey("rarity");
     }
 }

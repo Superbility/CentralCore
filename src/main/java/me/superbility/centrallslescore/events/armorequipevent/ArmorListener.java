@@ -27,7 +27,7 @@ public class ArmorListener implements Listener {
     }
 
     @EventHandler (priority = EventPriority.HIGH)
-    public final void inventoryClick(InventoryClickEvent e) {
+    public final void inventoryClick(InventoryClickEvent e) { // BeABraveDude
         boolean shift = false;
         boolean numberkey = false;
         if (!e.isCancelled()) {
@@ -39,9 +39,8 @@ public class ArmorListener implements Listener {
                 if (e.getClick().equals(ClickType.NUMBER_KEY)) {
                     numberkey = true;
                 }
-
                 if (e.getSlotType() == SlotType.ARMOR || e.getSlotType() == SlotType.QUICKBAR || e.getSlotType() == SlotType.CONTAINER) {
-                    if (e.getInventory() == null || e.getInventory().getType().equals(InventoryType.PLAYER)) {
+                    if (e.getInventory() == null || e.getInventory().getType().equals(InventoryType.PLAYER) || e.getInventory().getType().equals(InventoryType.CRAFTING)) {
                         if (e.getInventory().getType().equals(InventoryType.CRAFTING) || e.getInventory().getType().equals(InventoryType.PLAYER)) {
                             if (e.getWhoClicked() instanceof Player) {
                                 ArmorType newArmorType = ArmorType.matchType(shift ? e.getCurrentItem() : e.getCursor());
@@ -49,10 +48,7 @@ public class ArmorListener implements Listener {
                                     if (shift) {
                                         newArmorType = ArmorType.matchType(e.getCurrentItem());
                                         if (newArmorType != null) {
-                                            boolean equipping = true;
-                                            if (e.getRawSlot() == newArmorType.getSlot()) {
-                                                equipping = false;
-                                            }
+                                            boolean equipping = e.getRawSlot() != newArmorType.getSlot();
 
                                             label167: {
                                                 if (newArmorType.equals(ArmorType.HELMET)) {
@@ -99,7 +95,6 @@ public class ArmorListener implements Listener {
                                             }
 
                                             me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent((Player)e.getWhoClicked(), EquipMethod.SHIFT_CLICK, newArmorType, equipping ? null : e.getCurrentItem(), equipping ? e.getCurrentItem() : null);
-                                            Bukkit.getServer().getConsoleSender().sendMessage("EVENT CALLED"); //TODO REMOVE
                                             Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                                             if (armorEquipEvent.isCancelled()) {
                                                 e.setCancelled(true);
@@ -130,7 +125,6 @@ public class ArmorListener implements Listener {
                                             }
 
                                             me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent((Player)e.getWhoClicked(), method, newArmorType, oldArmorPiece, newArmorPiece);
-                                            Bukkit.getServer().getConsoleSender().sendMessage("EVENT CALLED"); //TODO REMOVE
                                             Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                                             if (armorEquipEvent.isCancelled()) {
                                                 e.setCancelled(true);
@@ -154,10 +148,8 @@ public class ArmorListener implements Listener {
                 Player player = e.getPlayer();
                 if (e.getClickedBlock() != null && e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                     Material mat = e.getClickedBlock().getType();
-                    Iterator var4 = this.blockedMaterials.iterator();
 
-                    while(var4.hasNext()) {
-                        String s = (String)var4.next();
+                    for (String s : this.blockedMaterials) {
                         if (mat.name().equalsIgnoreCase(s)) {
                             return;
                         }
@@ -166,7 +158,7 @@ public class ArmorListener implements Listener {
 
                 ArmorType newArmorType = ArmorType.matchType(e.getItem());
                 if (newArmorType != null && (newArmorType.equals(ArmorType.HELMET) && this.isAirOrNull(e.getPlayer().getInventory().getHelmet()) || newArmorType.equals(ArmorType.CHESTPLATE) && this.isAirOrNull(e.getPlayer().getInventory().getChestplate()) || newArmorType.equals(ArmorType.LEGGINGS) && this.isAirOrNull(e.getPlayer().getInventory().getLeggings()) || newArmorType.equals(ArmorType.BOOTS) && this.isAirOrNull(e.getPlayer().getInventory().getBoots()))) {
-                    me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent(e.getPlayer(), EquipMethod.HOTBAR, ArmorType.matchType(e.getItem()), (ItemStack)null, e.getItem());
+                    me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent(e.getPlayer(), EquipMethod.HOTBAR, ArmorType.matchType(e.getItem()), null, e.getItem());
                     Bukkit.getServer().getConsoleSender().sendMessage("EVENT CALLED"); //TODO REMOVE
                     Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                     if (armorEquipEvent.isCancelled()) {
@@ -183,8 +175,8 @@ public class ArmorListener implements Listener {
     public void inventoryDrag(InventoryDragEvent event) {
         ArmorType type = ArmorType.matchType(event.getOldCursor());
         if (!event.getRawSlots().isEmpty()) {
-            if (type != null && type.getSlot() == (Integer)event.getRawSlots().stream().findFirst().orElse(0)) {
-                me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent((Player)event.getWhoClicked(), EquipMethod.DRAG, type, (ItemStack)null, event.getOldCursor());
+            if (type != null && type.getSlot() == event.getRawSlots().stream().findFirst().orElse(0)) {
+                me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent((Player)event.getWhoClicked(), EquipMethod.DRAG, type, null, event.getOldCursor());
                 Bukkit.getServer().getConsoleSender().sendMessage("EVENT CALLED"); //TODO REMOVE
                 Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
                 if (armorEquipEvent.isCancelled()) {
@@ -201,7 +193,7 @@ public class ArmorListener implements Listener {
         ArmorType type = ArmorType.matchType(e.getBrokenItem());
         if (type != null) {
             Player p = e.getPlayer();
-            me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent(p, EquipMethod.BROKE, type, e.getBrokenItem(), (ItemStack)null);
+            me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent armorEquipEvent = new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent(p, EquipMethod.BROKE, type, e.getBrokenItem(), null);
             Bukkit.getServer().getConsoleSender().sendMessage("EVENT CALLED"); //TODO REMOVE
             Bukkit.getServer().getPluginManager().callEvent(armorEquipEvent);
             if (armorEquipEvent.isCancelled()) {
@@ -228,11 +220,10 @@ public class ArmorListener implements Listener {
         ItemStack[] var3 = p.getInventory().getArmorContents();
         int var4 = var3.length;
 
-        for(int var5 = 0; var5 < var4; ++var5) {
-            ItemStack i = var3[var5];
+        for (ItemStack i : var3) {
             if (!this.isAirOrNull(i)) {
                 Bukkit.getServer().getConsoleSender().sendMessage("EVENT CALLED"); //TODO REMOVE
-                Bukkit.getServer().getPluginManager().callEvent(new me.superbility.centrallslescore.events.armorequipevent.ArmorEquipEvent(p, EquipMethod.DEATH, ArmorType.matchType(i), i, (ItemStack)null));
+                Bukkit.getServer().getPluginManager().callEvent(new ArmorEquipEvent(p, EquipMethod.DEATH, ArmorType.matchType(i), i, null));
             }
         }
 
