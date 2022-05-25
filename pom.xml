@@ -82,7 +82,6 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
-
     </repositories>
 
     <dependencies>
@@ -102,6 +101,8 @@
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
             <version>7.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/worldguard-6.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -117,7 +118,8 @@
         <dependency>
             <groupId>com.leonardobishop</groupId>
             <artifactId>quests</artifactId>
-            <version>3.12</version>
+            <version>3.10.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>de.tr7zw</groupId>
